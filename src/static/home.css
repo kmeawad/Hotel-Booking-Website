@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+button, input[type=submit]{
+    border: none;
+    border-radius: 4px;
+    min-height: 30px;
+    background-color: #04AA6D;
+}
+button:hover, input[type=submit]:hover {
+    background-color: greenyellow;
+    color: green;
+    cursor: pointer;
+}
+
+button{
+    min-width:30px;
+    max-width: max-content;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+  
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 14px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    cursor: pointer;
+}
+
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+body{
+    margin-top: 0%;
+    margin-left: 0%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #DDDDDD;
+}
+
+#content{
+    padding: 5px;
+    margin-left: 10px;
+}
+
+input[type=text]{
+    max-width: 150px;
+}
+
+input, select, button{
+    padding:4px;
+    margin:4px;
+}
+
+select:hover, button:hover{
+    cursor: pointer;
+}
+
+.resultDisplay td{
+    padding: 8px;
+}
+
+
+.resultDisplay tr:nth-child(odd){background-color: whitesmoke;}
+.resultDisplay tr:nth-child(even){background-color: white;}
+  
+.resultDisplay tr:hover {background-color: rgb(196, 195, 195);}
+  
+.resultDisplay th {
+    border: 1px solid #04AA6D;
+    padding: 8px;
+}
+
+.resultDisplay th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+#hotelname{
+    min-width: 30%;
+    min-height: 20px;
+}

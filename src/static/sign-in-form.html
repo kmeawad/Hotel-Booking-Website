@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="login.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+<div class="container">
+    <div>
+        <button onclick="location.href='/'" >Back</button>
+    </div>
+    <body>
+        <h1>Login Here</h1>
+            <table>
+                <tr>
+                    <td>Email:</td> 
+                    <td><input  id='email' type='text'/></td>
+                </tr>
+                <tr>
+                    <td>Password: </td> 
+                    <td><input  id='pwd' type='password'/></td> 
+                <tr>   
+            </table>
+            <label id="error"></label>
+            <br />
+            <button onclick="javascript:checkLogin()">Submit</button>
+    </body>
+</div>
+<script>
+    // checks if login credentials are correct
+    function checkLogin(){
+        let xReq = new XMLHttpRequest();
+        xReq.onreadystatechange = displayLogin;
+        let email = document.getElementById("email");
+        let password = document.getElementById("pwd");
+
+        xReq.open('GET', `/login?email=${email.value}&pwd=${password.value}`, true);
+        xReq.send();
+
+    }
+
+    // displays incorrecct if the login credintials are wrong or redirects to home page if correct
+    function displayLogin(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "correct"){
+                errorLabel = document.getElementById("error");
+                window.location.href = './home.html'
+    
+            }else{
+                errorLabel = document.getElementById("error");
+                errorLabel.innerHTML = "Incorrect username or password";
+            }
+        }
+    }
+</script>
+</html>

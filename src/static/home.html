@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="home.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="getView();">
+    <header class="topnav">
+        <a onclick="javascript:setActive(this); getAccountInfo()">View Account</a>
+        <a onclick="javascript:setActive(this); viewBookingsButton()">View Bookings</a>
+        <a onclick="javascript:setActive(this); findRoomButton()">Find Rooms</a>
+        <a onclick="javascript:setActive(this); findHotelButton()">Find Hotels</a>
+        <a style="float: right;" onclick="javascript:dropView()">LogOut</a>
+    </header>
+    <div id='content' >Home Page</div>
+</body>
+<script src='main.js'></script>
+</html>

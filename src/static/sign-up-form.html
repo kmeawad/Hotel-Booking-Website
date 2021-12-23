@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="signup.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<div class="container">
+    <div>
+        <button onclick="location.href='/'" >Back</button>
+    </div>
+    <body>
+        <h1>Create A New Account</h1>
+        <b>Personal Info</b>
+        <form action="javascript:checkLogin()">
+            <table>
+                <tr>
+                    <td>Email:</td> 
+                    <td><input required id='email' type='text'/></td>
+                    <td>Password: </td> 
+                    <td><input required id='pwd' type='password'/></td> 
+                </tr>
+                <tr>
+                    <td>First Name:</td> 
+                    <td><input required id='fName' type='text'/></td>
+                    <td>Last Name: </td> 
+                    <td><input required id='lName' type='text'/></td> 
+                </tr>
+
+                <tr><td><b>Address</b></td></tr>
+                <tr>
+                    <td>Postal: </td> 
+                    <td><input id='postal' type='text'/></td> 
+                    <td>Street: </td> 
+                    <td><input id='street' type='text'/></td>
+                    <td>City: </td> 
+                    <td><input id='city' type='text'/></td>
+                    <td>Province: </td> 
+                    <td><input id='province' type='text'/></td>
+                <tr> 
+
+                <tr><td><b>Credit card info</b></td></tr>
+                <tr>
+                    <td>Credit Card Type:</td>
+                    <td>
+                        <select id="ccType">
+                            <option value=""></option>
+                            <option value="mastercard">Mastercard</option>
+                            <option value="visa">Visa</option>
+                            <option value="americanexpress">American Express</option>
+                        </select>
+                    </td>
+                    <td>Credit Card Number:</td>
+                    <td><input id='ccNo' type='number'/></td>
+                    <td>CVV:</td>
+                    <td><input id='cvv' type='number' max="999"/></td>
+                </tr>
+            </table>
+            <label id="error"></label>
+            <br />
+            <!-- button onclick="javascript:checkLogin()">Submit</button -->
+            <input type="submit"/>
+        </form>
+    </body>
+</div>
+<script>
+
+    // ensures that email is not already used, if not, adds it to the database
+    function checkLogin(){
+        let xReq = new XMLHttpRequest();
+        xReq.onreadystatechange = Redirect;
+        let email = document.getElementById("email"), password = document.getElementById("pwd");
+        let fName = document.getElementById("fName"),lName = document.getElementById("lName");
+        let postal = document.getElementById("postal"),street = document.getElementById("street"),city = document.getElementById("city"),province = document.getElementById("province");
+        let ccType = document.getElementById("ccType"),ccNo = document.getElementById("ccNo"),cvv = document.getElementById("cvv");
+
+        xReq.open('POST', `/sign-up`, true);
+        xReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xReq.send(`email=${email.value}&pwd=${password.value}&fName=${fName.value}&lName=${lName.value}&postal=${postal.value}&street=${street.value}&city=${city.value}&province=${province.value}&ccType=${ccType.value}&ccNo=${ccNo.value}&cvv=${cvv.value}`);
+        
+    }
+
+    // redirects to main page if email is unique, or else, display that the email is already taken
+    function Redirect(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "correct"){
+                window.location.href = '/'
+            }else{
+                errorLabel = document.getElementById("error");
+                errorLabel.innerHTML = "Email is already taken";
+            }
+        }
+    }
+</script>
+</html>
