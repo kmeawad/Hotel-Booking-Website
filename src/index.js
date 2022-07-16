@@ -324,3 +324,4 @@ app.get('/getBooking', (req, res) => {
 
 app.use(express.static('static'));
 app.listen(80);
+console.log("listening at localhost:80")
